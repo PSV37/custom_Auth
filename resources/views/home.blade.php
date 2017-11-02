@@ -20,14 +20,20 @@
                   {{Session::get('u_name')}}
                   {{Session::get('u_role')}}
 
-
-                  @if(!Session::has('org_name'))
-                    You are logged in!
-                
-                @else
-              
-               You are in else filed!
-                
+ 
+                <!-- you can perform two way -->
+                   <!-- first -->
+                @if(!Session::get('org_name'))
+                    You are logged in!               
+                @else           
+                    You are in else filed!
+                @endif
+          
+                     <!-- second -->
+                @if(!Session::has('org_name'))
+                   You are logged in!                
+                @else             
+                   You are in else filed!
                 @endif
                 </div>
             </div>
