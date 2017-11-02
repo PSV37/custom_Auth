@@ -29,6 +29,7 @@
     </tr>
   </thead>
   <tbody>
+    @isset($addedusers)
     @foreach($addedusers as $user)
     <tr>
       <th scope="row"><a href="{{url('adduser/image/'.$user->id)}}"><img src="{{url('../')}}/images/{{$user->image}}" height="50px" class="img-rounded add_user_img"></a></th>
@@ -40,6 +41,10 @@
       <td><a href="{{url('adduser/'.$user->id.'/delete')}}" class="btn btn-danger" onclick="return confirm('Are You Sure Deleted..')">Delete</a></td>
     </tr>
     @endforeach
+    @endisset
+    <tr>
+      <td><b style="color: red">No User Added</b></td>
+    </tr>
   </tbody>
 </table>
   </div>

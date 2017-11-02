@@ -13,8 +13,22 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                  
+                  {{ Session::get('org_name') }}
+                  {{Session::get('username')}}
+                  {{Session::get('logo1')}}
+                  {{Session::get('logo2')}}
+                  {{Session::get('u_name')}}
+                  {{Session::get('u_role')}}
+
+
+                  @if(!Session::get('org_name'))
                     You are logged in!
+                
+                @else
+              
+               You are in else filed!
+                
+                @endif
                 </div>
             </div>
         </div>

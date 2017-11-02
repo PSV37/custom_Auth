@@ -49,10 +49,14 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         @if(Auth::check() && Auth::user()->role_id == 1)
-                         <li><a href="{{ route('registeruser') }}">Registred User</a></li>
-                         <li><a href="{{ route('createuser') }}">New User</a></li>
+                             <li><a href="{{ route('registeruser') }}">Registred User</a></li>
+                             <li><a href="{{ route('createuser') }}">New User</a></li>
+                             <li><a href="{{route('create')}}">Create Orgnization</a></li>
                          @endif
-                         <li><a href="{{route('userlist')}}">Added User List</a></li>
+                         @if(Auth::check() && Auth::user()->id)
+                             <li><a href="{{route('userlist')}}">Added User List</a></li>             
+                             <li><a href="{{route('list')}}">Orgnization List</a></li>
+                         @endif    
                     </ul>
 
                     <!-- Right Side Of Navbar -->

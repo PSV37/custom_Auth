@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('login','LoginController@login')->name('login');
+
+
+Route::post('logout','LoginController@logout')->name('logout');
+
+
+
 Auth::routes();
 
 //display hom page
@@ -60,3 +67,24 @@ Route::post('reset/password','AddController@setpassword')->name('reset');
 Route::get('adduser/image/{id}','UserController@profile')->name('profile');
 
 Route::post('image/upload','UserController@upload');
+
+
+/*********************************** About Orgnization  ***************************************/
+
+//create orgnization
+Route::get('create/orgnization','OrgnizationController@create')->name('create');
+
+//add orgnization
+Route::post('add/orgnization','OrgnizationController@store');
+
+//orgnization list
+Route::get('orgnization/list','OrgnizationController@index')->name('list');
+
+//display edit view
+Route::get('orgnization/{id}/edit','OrgnizationController@edit');
+
+//update orgnization
+Route::post('update/orgnization','OrgnizationController@update');
+
+//Delete Orgnization 
+Route::get('orgnization/{id}/delete','OrgnizationController@destroy');
