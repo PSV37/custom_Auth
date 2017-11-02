@@ -31,9 +31,9 @@
           
                      <!-- second -->
                 @if(!Session::has('org_name'))
-                   You are logged in!                
+                  You are in else filed!             
                 @else             
-                   You are in else filed!
+                    You are logged in!  
                 @endif
                 </div>
             </div>
