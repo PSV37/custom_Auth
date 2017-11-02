@@ -21,7 +21,7 @@
                   {{Session::get('u_role')}}
 
 
-                  @if(!Session::get('org_name'))
+                  @if(!Session::has('org_name'))
                     You are logged in!
                 
                 @else
