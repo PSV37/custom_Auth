@@ -2,8 +2,11 @@
 
 @section('content')
 <div class="container">
+
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        @include('layouts.sidebar')
+        <div class="col-md-8 col-lg-8 col-sm-9 ">
+
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
 
@@ -13,27 +16,22 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                  {{ Session::get('org_name') }}
-                  {{Session::get('username')}}
-                  {{Session::get('logo1')}}
-                  {{Session::get('logo2')}}
-                  {{Session::get('u_name')}}
-                  {{Session::get('u_role')}}
 
- 
+                @if(Session::get('orgnization_name'))
+                     this is {{Session::get('orgnization_name')}}
+
+
+                @else
                 <!-- you can perform two way -->
                    <!-- first -->
-                @if(!Session::get('org_name'))
-                    You are logged in!               
-                @else           
-                    You are in else filed!
-                @endif
-          
+                @if(Session::get('org_name'))
+                    You are orgnization is    {{Session::get('org_name')}}             
+                @endif    
                      <!-- second -->
                 @if(!Session::has('org_name'))
-                  You are in else filed!             
-                @else             
-                    You are logged in!  
+                  You are logged in!                                
+                @endif
+
                 @endif
                 </div>
             </div>

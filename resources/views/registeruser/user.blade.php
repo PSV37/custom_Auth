@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
 <div class="row">
-  <div class="col-md-2 col-lg-2">
-  </div>
-  <div class="col-md-8 col-lg-8 col-sm-12">
+    @include('layouts.sidebar')
+  <div class="col-md-9 col-lg-9 col-sm-9">
    <div>
       <h2>Registred User :</h2>
       @if(session()->has('msg'))
@@ -43,9 +43,7 @@
   </tbody>
 </table>
   </div>
-  <div class="col-md-2 col-lg-2">
-  </div>
-  
+</div>  
 </div>
 
 @endsection

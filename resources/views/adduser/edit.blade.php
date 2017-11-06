@@ -3,7 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+           @include('layouts.sidebar')
+        <div class="col-md-9 col-lg-9 col-sm-9 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
       

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Orgnization;
 use Auth;
 use DB;
+use Session;
 
 class OrgnizationController extends Controller
 {
@@ -103,7 +104,6 @@ class OrgnizationController extends Controller
        session()->flash('msg','New Orgnization sucessfully');
        return redirect ('create/orgnization');
       
-
     }
 
     /**
@@ -112,9 +112,29 @@ class OrgnizationController extends Controller
      * @param  \App\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function show(cr $cr)
-    {
-        //
+    public function show(Request $request)
+    { 
+        $array_result = array();
+        $org_id = $request->org_id;
+        $obj_org_data = Orgnization::find($org_id);
+       
+        Session::put('org_id', $obj_org_data->org_id);
+        Session::put('orgnization_name', $obj_org_data->name);
+        Session::put('org_logo1', $obj_org_data->logo1);
+        Session::put('org_logo2', $obj_org_data->logo2);
+
+       if($obj_org_data)
+       {
+          $array_result['status'] = true;
+          $array_result['msg'] = 'Successfully changed';
+       }
+       else
+       {
+         $array_result['status'] = false;
+          $array_result['msg'] = 'Failed due to changed';
+       }
+        echo json_encode($array_result);
+      
     }
 
     /**
@@ -173,13 +193,9 @@ class OrgnizationController extends Controller
                 $path = 'orgnization';
                 $logo_second->move($path , $logoname_second);
                 $orgnization_logo2 = $logoname_second;
-
-        
-
+                
                 $uid = Auth::user()->id;
                 $org_id = $request->org_id;
-                
-
                 $org =  Orgnization::find($org_id);
                 $org->name = $request->name;
                 $org->webaddress = $request->web;

@@ -10,14 +10,17 @@ use DB;
 class UserController extends Controller
 {
         /************* Display List  Of Registred User *************/
+
         public function index()
         {
             $uid = Auth::user()->id;
             $allusers = DB::table('users')->where('users.id','!=',$uid)->where('status',1)->get();
+            //print_r( $allusers);
             return view('registeruser.user',compact('allusers'));
         }
 
         /************* Display Edit View Of Registred User *************/
+
         public function registereditview($id)
         {
             $obj_user_data = User::find($id);
@@ -25,6 +28,7 @@ class UserController extends Controller
         }
 
         /************* Upadte Data Of Registred User *************/
+
         public function registeredit(Request $request)
         {
             $uid = $request->id;
@@ -59,6 +63,7 @@ class UserController extends Controller
 
 
         /************* Delete Data Of Registred User *************/
+
         public function registerdelete($id)
         {
             $obj_user_data = User::find($id);
@@ -86,4 +91,15 @@ class UserController extends Controller
            DB::table('users')->where('id',$uid)->update(['image'=>$filename]);
            return back();
         }
+
+
+        public function ajax_edit(Request $request)
+        {
+            $obj_user_data = User::find($request->user_id);
+            $result_response['status']=true;
+            $result_response['msg']=$obj_user_data;
+           echo  json_encode($result_response);
+
+        }
+        
 }

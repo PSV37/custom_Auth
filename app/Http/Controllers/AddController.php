@@ -11,6 +11,7 @@ use DB;
 use Hash;
 use App\Mail\verifyEmail;
 
+
 class AddController extends Controller
 {
 		/************* Display Create User *************/

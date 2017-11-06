@@ -20,11 +20,11 @@ Route::post('login','LoginController@login')->name('login');
 
 Route::post('logout','LoginController@logout')->name('logout');
 
-
+Route::get('password/reset','HomeController@resetpassword');
 
 Auth::routes();
 
-//display hom page
+//display home page
 Route::get('/home', 'HomeController@index')->name('home');
 
 //display registred User list
@@ -38,6 +38,9 @@ Route::post('register/update','UserController@registeredit')->name('registerupda
 
 //deleted registred user
 Route::get('user/{id}/delete','UserController@registerdelete');
+
+
+/*********************************** About Added User  ***************************************/
 
 //Add new user
 Route::get('create/user','AddController@create')->name('createuser');
@@ -88,3 +91,7 @@ Route::post('update/orgnization','OrgnizationController@update');
 
 //Delete Orgnization 
 Route::get('orgnization/{id}/delete','OrgnizationController@destroy');
+
+Route::post('change/orgnization','OrgnizationController@show');
+
+Route::post('user/ajax_edit','UserController@ajax_edit');
